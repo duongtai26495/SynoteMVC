@@ -32,26 +32,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().configurationSource(corsConfigurationSource())
                 .and()
                 .csrf().disable()
-                .authorizeRequests()
-                .antMatchers(
-                    "/user/register",
-                    "/user/login",
-                    "/user/images/**",
-                	"/save_user",
-                    "/images/**",
-                    "/css/**",
-                    "/js/**").permitAll()
+                .authorizeRequests().antMatchers(
+                        "/images/**",
+                        "/css/**",
+                        "/js/**",
+                        "/authen",
+                        "/save_user").permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/user/login")
+                .loginPage("/authen")
                 .loginProcessingUrl("/j_spring_security_check")
-                .defaultSuccessUrl("/user/login?registered=true")
-                .failureForwardUrl("/user/login?registered=false")
-                .usernameParameter("username")
-                .passwordParameter("password")
+                .defaultSuccessUrl("/")
+                .failureUrl("/authen?login=false")
                 .and()
-                .authorizeRequests()
-                .anyRequest().permitAll();
+                .logout()
+                .logoutUrl("/auth/logout")
+                .logoutSuccessUrl("/authen?logout=true")
+                .permitAll()
+                .and()
+                .authorizeRequests().anyRequest().authenticated();
     }
     
 
@@ -78,7 +77,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.authenticationProvider(authenticationProvider());
 //    }
-    
+//
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());

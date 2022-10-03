@@ -7,11 +7,15 @@ import com.duongtai.syndiary.services.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.server.PathParam;
 import java.io.IOException;
 
 import static com.duongtai.syndiary.configs.MyUserDetail.getUsernameLogin;
@@ -35,18 +39,7 @@ public class UserController {
 				new ResponseObject(Snippets.SUCCESS, Snippets.USER_FOUND, userDTO));
 	}
 
-    @PostMapping("register")
-    public ResponseEntity<ResponseObject> createUser (@RequestBody User user){
-    	
-    	if(user != null){
-    		user = userService.saveUser(user);
-    		UserDTO userDTO = ConvertEntity.convertToDTO(user);
-    		return ResponseEntity.status(HttpStatus.OK).body(
-    				new ResponseObject(Snippets.SUCCESS,Snippets.USER_CREATE_SUCCESSFULLY, userDTO));
-    	}
-        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(
-				new ResponseObject(Snippets.FAILED,Snippets.EMAIL_ALREADY_TAKEN +" or " + Snippets.USERNAME_ALREADY_TAKEN, null));
-    }
+
 
     @PutMapping("edit/{username}")
     public ResponseEntity<ResponseObject> editByUsername(@PathVariable String username, @RequestBody User user){
@@ -111,9 +104,6 @@ public class UserController {
     }
 
 
-    @GetMapping("refresh_token")
-    public void refreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        userService.refreshToken(request,response);
-    }
+
 
 }

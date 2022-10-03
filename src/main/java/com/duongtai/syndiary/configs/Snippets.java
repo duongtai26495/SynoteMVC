@@ -84,4 +84,8 @@ public class Snippets {
     public static final String NOT_FOUND = "%s with id %s not found";
 
     public static final String TITLE_HOME_PAGE = "Home Page";
+    public static final String LOGIN = "Login";
+    public static final String TITLE = "title";
+    public static final String REGISTER = "Register";
+    public static final String AUTHENTICATE = "Authentication";
 }

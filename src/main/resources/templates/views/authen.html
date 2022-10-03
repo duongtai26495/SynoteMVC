@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="/fragments/header::header_authenticate">
+</head>
+<body>
+<div class="wrapper">
+
+    <div id="login-panel" class="authen-panel flex-column">
+        <img th:src="@{/images/logo.png}" class="logo-authen" />
+        <form class="form-group" th:action="@{/j_spring_security_check}" method="post">
+            <p class="form-header mt-2 mb-2 text-white">Welcome back</p>
+            <input class="form-control p-2 mt-3" type="text" placeholder="Username" name="username" />
+            <input class="form-control p-2 mt-3" type="password" placeholder="Password" name="password" />
+            <input class="form-control btn btn-secondary mt-3 p-2" type="submit" name="submit" value="Go" />
+        </form>
+        <button onclick="open_register()" id="open-register" class="form-control btn btn-primary mt-3 p-2">Join Now</button>
+        <p th:if="${(param.logout != null) and (param.logout[0] == 'true')}" class="warning_text text-success">Logout success</p>
+        <p th:if="${(param.login != null) and (param.login[0] == 'false')}"  class="warning_text text-danger">Login failed</p>
+    </div>
+
+    <div id="register-panel" class="authen-panel rounded-5 flex-column">
+        <img th:src="@{/images/logo.png}" class="logo-authen" />
+        <form class="form-group" th:action="@{/save_user}" th:object="${user}" method="post">
+            <p class="form-header mt-2 mb-2 text-white">Register</p>
+            <input class="form-control p-2 mt-3" type="text" th:value="${user.full_name}" id="fullname" placeholder="Full name" name="full_name" />
+            <input class="form-control p-2 mt-3" type="email" th:value="${user.email}" id="email" placeholder="Email" name="email" />
+            <select class="form-control mt-2" id="gender" th:value="${user.gender}" name="gender">
+                <option value="" name="gender" hidden>Gender</option>
+                <option value="1" >Male</option>
+                <option value="2" >Female</option>
+                <option value="3" >Unknown</option>
+            </select>
+            <input class="form-control p-2 mt-3" type="text" th:value="${user.username}" placeholder="Username" name="username" />
+            <input class="form-control p-2 mt-3" type="password" placeholder="Password" name="password" />
+            <input class="form-control btn btn-secondary mt-3 p-2" type="submit" name="submit" value="Join now" />
+        </form>
+        <button onclick="open_login()" id="open-login" class="form-control btn btn-primary mt-3 p-2">Login</button>
+    </div>
+</div>
+</body>
+</html>
