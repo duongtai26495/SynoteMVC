@@ -22,7 +22,7 @@ body{
     overflow-x: hidden;
 }
 .authen-panel{
-    transition:.5s;
+    transition:1s;
     position: absolute;
     right: 0;
     padding:3rem;
@@ -42,10 +42,17 @@ body{
 .authen-panel form input::placeholder{
     color: white;
 }
-.authen-panel form input:focus,
-.authen-panel form select:focus{
+.authen-panel form input:focus{
     background-color: transparent;
     color:white;
+    box-shadow: 0px 0px 5px 2px var(--primary-color);
+}
+.authen-panel form select{
+	color:white;
+}
+.authen-panel form option{
+	background-color: transparent;
+    color:black;
 }
 .rounded-5{
     border-radius: 5px;
@@ -100,6 +107,7 @@ margin:auto;
         min-height: 100vh;
         background-color: rgba(0, 0, 0, .5);
         max-width: unset!important;
+    	transition:.5s;
     }
     .wrapper{
         background-image: var(--bg-2);

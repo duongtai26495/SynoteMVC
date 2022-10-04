@@ -4,7 +4,7 @@ import com.duongtai.syndiary.configs.Snippets;
 import com.duongtai.syndiary.entities.User;
 import com.duongtai.syndiary.services.impl.StorageServiceImpl;
 import com.duongtai.syndiary.services.impl.UserServiceImpl;
-
+import static com.duongtai.syndiary.configs.MyUserDetail.getUsernameLogin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -25,7 +25,8 @@ public class HomeController {
     @GetMapping("")
     public ModelAndView homePage(ModelMap model){
         model.addAttribute(Snippets.TITLE, Snippets.APP_NAME+" "+Snippets.TITLE_HOME_PAGE);
-        return new ModelAndView("/home",model);
+        model.addAttribute("user", userService.getUserByUsername(getUsernameLogin()));
+        return new ModelAndView("home",model);
     }
     @GetMapping("authen")
     public ModelAndView createUser (ModelMap model,
@@ -36,15 +37,15 @@ public class HomeController {
     }
 
     @PostMapping("save_user")
-    public ModelAndView save_user(@ModelAttribute User user, ModelMap model){
+    public String save_user(@ModelAttribute User user, ModelMap model){
         if(user != null ){
             if(userService.saveUser(user)!= null){
                 System.out.println("New user register: "+user.getUsername());
-                return new ModelAndView("redirect:/authen?register=true");
+                return "redirect:/authen?register=true";
             }
         }
         model.addAttribute("user",model);
-        return new ModelAndView("authen?register=false",model);
+        return "redirect:/authen?register=false";
     }
 
     @GetMapping("images/{fileName:.+}")

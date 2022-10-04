@@ -31,28 +31,8 @@ public class UserController {
     @Autowired
     UserServiceImpl userService;
 
-    @GetMapping("profile/{username}")
-    public ResponseEntity<ResponseObject> getUserByUsername(@PathVariable String username){
-    	User user = userService.getUserByUsername(username);
-    	UserDTO userDTO = ConvertEntity.convertToDTO(user);
-		return ResponseEntity.status(HttpStatus.OK).body(
-				new ResponseObject(Snippets.SUCCESS, Snippets.USER_FOUND, userDTO));
-	}
+    
 
-
-
-    @PutMapping("edit/{username}")
-    public ResponseEntity<ResponseObject> editByUsername(@PathVariable String username, @RequestBody User user){
-        user.setUsername(username);
-        if(userService.findByUsername(username) != null) {
-        	UserDTO userDTO = ConvertEntity.convertToDTO(userService.editByUsername(user));
-        	return ResponseEntity.status(HttpStatus.OK).body(
-        			new ResponseObject(Snippets.SUCCESS, Snippets.USER_EDITED, userDTO)
-        			);
-        }
-        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(
-				new ResponseObject(Snippets.FAILED,Snippets.USER_NOT_FOUND, null));
-    }
 
     @PutMapping("change_password")
     public ResponseEntity<ResponseObject> updatePasswordByUsername(@RequestBody User user){
@@ -103,7 +83,16 @@ public class UserController {
         return storageService.readProfileImage(username);
     }
 
-
+    
+    @GetMapping("update/{username}")
+    public ModelAndView update_view(ModelMap model, @PathVariable String username) {
+    	User user = userService.findByUsername(username);
+    	if(user != null) {
+    		model.addAttribute("user", user);
+        	return new ModelAndView("user/update_user",model);
+    	}
+    	return new ModelAndView("redirect:/");
+    }
 
 
 }
