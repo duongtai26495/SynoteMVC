@@ -94,5 +94,24 @@ public class UserController {
     	return new ModelAndView("redirect:/");
     }
 
+    @PostMapping("save_update")
+    public ModelAndView save_update(@ModelAttribute User user, ModelMap model) {
+    	System.out.println("User: "+user.getFull_name());
+    	System.out.println("User: "+user.getEmail());
+    	System.out.println("User: "+user.getGender());
+    	System.out.println("User: "+user.getProfile_image());
+    	System.out.println("User: "+user.getUsername());
+    	if(user != null) {
+    		user.setId(userService.findByUsername(user.getUsername()).getId());
+    		if(userService.editByUsername(user) != null) {
+    			model.addAttribute("user", ConvertEntity.convertToDTO(userService.findByUsername(user.getUsername())));
+    			model.addAttribute("result", "success");
+    			return new ModelAndView("redirect:/user/update/"+user.getUsername(),model);
+    		}
+    		
+    	}
+    	model.addAttribute("result", "failed");
+    	return new ModelAndView("redirect:/user/update/"+user.getUsername(),model);
+    }
 
 }

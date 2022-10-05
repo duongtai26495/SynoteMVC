@@ -124,10 +124,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             getUser.setProfile_image(user.getProfile_image());
         }
 
-        if(user.getActive() != getUser.getActive()) {
-            getUser.setActive(!getUser.getActive());
-        }
-
         if(user.getFull_name() != null){
             getUser.setFull_name(user.getFull_name());
         }

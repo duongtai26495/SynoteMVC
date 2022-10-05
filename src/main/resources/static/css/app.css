@@ -103,6 +103,8 @@ body{
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
+    overflow: hidden;
     border:5px solid white;
 }
 .user-inner{
@@ -123,7 +125,38 @@ body{
 }
 /* End User infor tab */
 
+
+/* Update user information */
+.update-form input,
+.update-form select{
+    margin-top:.5rem;
+}
+.form-wrapper{
+    padding: 1rem;
+    flex-direction: row;
+    align-items: center;
+    display:flex;
+}
+.pick-image{
+    position: absolute;
+    bottom: 0px;
+    padding-bottom: 20px;
+    font-size: 12px!important;
+    background-color: rgba(0,0,0,.5)!important;
+    
+}
+.pick-image:hover{
+    color:var(--primary-color)!important;
+}
+#img_avt{
+    display: none;
+}
+/* End update user information */
+
 @media only screen and (max-width: 1024px) {
+	.form-wrapper{
+		display:block;
+	}
 #user-infor-tab{
      width:100%;
  }
