@@ -8,22 +8,37 @@ function closeSideBar(){
 }
 
 function closeUserBar(){
-    document.getElementById("user-infor-tab").style.right = "-100%";
+    document.getElementById("user_info_wrapper").style.right = "-100%";
 }
 
 function openUserBar(){
-    document.getElementById("user-infor-tab").style.right = "0%";
+    document.getElementById("user_info_wrapper").style.right = "0%";
 }
 
-
+var fileSelected = null;
 function uploadImage(file){
     if(file.files && file.files[0]){
         if(file.files[0].size > 500000){
             document.getElementById("label_upload").innerHTML = "<p class='text-danger'><i class='fa-solid fa-circle-xmark'></i> File too big</p>";
             file.files[0].remove;
         }else{
-            var formdata = new FormData();
-			formdata.append("image", file.files[0]);
+			document.getElementById("preview-image-selected").style.backgroundImage = "url("+URL.createObjectURL(file.files[0])+")";
+           document.getElementById("preview-image-upload").style.display = "block";
+        //   uploadImageToAPI(file.files[0]) 
+           fileSelected = file.files[0];
+           file.files[0].remove;
+        }
+    	}
+    }
+    
+function confirmUpload(){
+   uploadImageToAPI(fileSelected)  
+}    
+  
+    
+  function uploadImageToAPI(file){
+	 var formdata = new FormData();
+			formdata.append("image", file);
             var requestOptions = {
             method: 'POST',
             body: formdata,
@@ -33,12 +48,18 @@ function uploadImage(file){
             fetch("/user/upload_image/"+username, requestOptions)
             .then(response => response.json())
             .then(result => {
-                console.log(result.data)
-                document.getElementById("image-selected").style.backgroundImage = "url(/user/images/"+username+")";
-                document.getElementById("url_image_selected").setAttribute("value",result.data);
-                file.files[0].remove;
-                })
+                document.getElementById("label_upload").innerHTML = "<p class='text-success'><i class='fa-solid fa-circle-check'></i> Profile image changed</p>";
+            	document.getElementById("image-selected").style.backgroundImage = "url(/user/images/"+username+")";
+            	document.getElementById("image-selected").style.backgroundImage = "url("+URL.createObjectURL(file)+")";
+            	document.getElementById("preview-image-upload").style.display = "none";
+       
+            })
               .catch(error => console.log('error', error));
-                }
-        }
-    }
+
+}
+
+function cancelUpload(){
+	document.getElementById("preview-image-upload").style.display = "none";
+	fileSelected = null;
+	
+}

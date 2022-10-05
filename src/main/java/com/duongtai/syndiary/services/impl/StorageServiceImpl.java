@@ -107,7 +107,6 @@ public class StorageServiceImpl implements StorageService {
                     user.setUsername(getUsernameLogin());
                     user.setProfile_image(generatedFileName);
                     userService.changeProfileImage(user);
-
                     return generatedFileName;
                 }
 

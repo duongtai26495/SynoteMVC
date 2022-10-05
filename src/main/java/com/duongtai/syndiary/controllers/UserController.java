@@ -87,20 +87,25 @@ public class UserController {
     @GetMapping("update/{username}")
     public ModelAndView update_view(ModelMap model, @PathVariable String username) {
     	User user = userService.findByUsername(username);
-    	if(user != null) {
-    		model.addAttribute("user", user);
-        	return new ModelAndView("user/update_user",model);
+    	
+    	if(username.equalsIgnoreCase(getUsernameLogin())) {
+    		if(user != null) {
+    			model.addAttribute("title", String.format(Snippets.UPDATE_USER,user.getFull_name()));
+        		model.addAttribute("user", user);
+            	return new ModelAndView("user/update_user",model);
+        	}
     	}
+    	
     	return new ModelAndView("redirect:/");
     }
 
     @PostMapping("save_update")
     public ModelAndView save_update(@ModelAttribute User user, ModelMap model) {
-    	System.out.println("User: "+user.getFull_name());
-    	System.out.println("User: "+user.getEmail());
-    	System.out.println("User: "+user.getGender());
-    	System.out.println("User: "+user.getProfile_image());
-    	System.out.println("User: "+user.getUsername());
+    	System.out.println("User full name: "+user.getFull_name());
+    	System.out.println("User email: "+user.getEmail());
+    	System.out.println("User gender: "+user.getGender());
+    	System.out.println("User image: "+user.getProfile_image());
+    	System.out.println("User username: "+user.getUsername());
     	if(user != null) {
     		user.setId(userService.findByUsername(user.getUsername()).getId());
     		if(userService.editByUsername(user) != null) {

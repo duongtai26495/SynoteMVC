@@ -88,4 +88,5 @@ public class Snippets {
     public static final String TITLE = "title";
     public static final String REGISTER = "Register";
     public static final String AUTHENTICATE = "Authentication";
+    public static final String UPDATE_USER = "Update user %s";
 }

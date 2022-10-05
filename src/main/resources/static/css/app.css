@@ -88,12 +88,12 @@ body{
     max-width:500px;
     width: 33%;
     background-color: var(--dark-header);
-    position: fixed;
+    position: absolute;
     top: 0;
-    overflow: hidden;
-    right: -100%;
+    right:0;
     z-index: 1;
     transition: .5s;
+    padding-top:3rem;
 }
 .user-image{
     width: 200px;
@@ -117,11 +117,18 @@ body{
     margin-top: 5px;
     color:white;
 }
-.user-informations{
-	margin-top:.5rem;
-}
 .update{
     background-color: var(--primary-color);
+}
+#user_info_wrapper{
+	width: 100vw;
+	background: transparent;
+	position: fixed;
+	height:100vh;
+	z-index:0;
+	top:0;
+	transition:.5s;
+    right: -100%;
 }
 /* End User infor tab */
 
@@ -130,12 +137,17 @@ body{
 .update-form input,
 .update-form select{
     margin-top:.5rem;
+    padding-top:10px;
+    padding-bottom:10px;
 }
 .form-wrapper{
     padding: 1rem;
     flex-direction: row;
     align-items: center;
     display:flex;
+}
+#image-selected{
+	background-image: url(/images/bg-2.jpg);
 }
 .pick-image{
     position: absolute;
@@ -151,14 +163,47 @@ body{
 #img_avt{
     display: none;
 }
+#preview-image-upload
+{
+	width:300px;
+	position: absolute;
+	right:42%;
+	top:20%;
+	z-index:99;
+	display:none;
+	transition:.3s;
+	background:var(--dark-header);
+	padding:15px;
+	border:1px solid white;
+	border-radius:10px;
+}
+#preview-image-selected{
+	background:red;
+	border-radius: 50%;
+	height:200px;
+	width:200px;
+	border:5px solid white; 
+	background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 /* End update user information */
 
+
 @media only screen and (max-width: 1024px) {
+	
+	#preview-image-upload{
+	right:0;
+	width:100%;
+	padding:1rem;
+	}
 	.form-wrapper{
 		display:block;
 	}
 #user-infor-tab{
      width:100%;
+     padding-top:0rem;
  }
  .header_desktop{
      display: none;

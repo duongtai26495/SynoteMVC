@@ -91,6 +91,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat(Snippets.TIME_PATTERN);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setProfile_image("default_user.png");
         user.setActive(true);
         user.setJoined_at(sdf.format(date));
         user.setLast_edited(sdf.format(date));
@@ -128,8 +129,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             getUser.setFull_name(user.getFull_name());
         }
 
-        if(user.getGender()>0 && user.getGender() <=2){
+        if(user.getGender()>0 && user.getGender() <=3){
             getUser.setGender(user.getGender());
+        }
+        
+        if(user.getPassword() != null && !passwordEncoder.encode(user.getPassword()).equals(getUser.getPassword())) {
+        	getUser.setPassword(passwordEncoder.encode(user.getPassword()));
         }
         getUser.setLast_edited(sdf.format(date));
         
