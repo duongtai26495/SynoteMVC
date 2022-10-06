@@ -125,7 +125,7 @@ body{
 	background: transparent;
 	position: fixed;
 	height:100vh;
-	z-index:0;
+	z-index:99;
 	top:0;
 	transition:.5s;
     right: -100%;
@@ -134,11 +134,24 @@ body{
 
 
 /* Update user information */
-.update-form input,
+.update-form input[type="text"],
+.update-form input[type="password"],
+.update-form input[type="email"],
 .update-form select{
     margin-top:.5rem;
     padding-top:10px;
     padding-bottom:10px;
+    background:transparent!important;
+    color:white!important;
+}
+.update-form input:disabled{
+	color:grey!important;
+}
+.update-form select option{
+	color:black;
+}
+.update-form input:focus{
+	background:transparent;
 }
 .form-wrapper{
     padding: 1rem;

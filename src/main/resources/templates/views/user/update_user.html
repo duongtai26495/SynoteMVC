@@ -56,10 +56,12 @@
  		<div id="preview-image-selected"></div>
  		<p class="text-confirm text-white mt-2">You confirm using this image?</p>
  		<div class="d-flex col-12 flex-row">
- 		<button onclick="confirmUpload()" class="form-control">Upload</button>
+ 		<button onclick="confirmUpload()" class="form-control bg-success text-white">Upload</button>
  		<button onclick="cancelUpload()" class="form-control ms-1">Try again</button>
  		</div>
  	</div>
  </div>
+ 
+<div th:replace="/fragments/footer::footer" class="footer"></div>
 </body>
 </html>
