@@ -9,10 +9,22 @@ a{
     --primary-color:#ef233c;
     --dark-header:#090a0a;
     --dark-body:#101212;
+    --secondary-color:#4C6793;
 }
 body{
 	overflow-x:hidden!important;
 	background-color:var(--dark-body)!important;	 
+}
+.btn-primary{
+transition: .3s!important;
+background:var(--primary-color)!important;
+}
+.btn-secondary{
+transition: .3s!important;
+background:var(--secondary-color)!important;
+}
+.btn-primary:hover{
+background:var(--secondary-color)!important;
 }
 /* Desktop header */
 .header_desktop{
@@ -203,9 +215,50 @@ body{
 
 /* End update user information */
 
+/* Top Component */
 
+.top_component_inner{
+    border:1px solid gray;
+    border-radius: 10px;
+
+}
+.form-sort {
+    background: transparent;
+    color: white;
+    border: unset;
+}
+.form-sort option {
+    background: black!important;
+}
+.btn-add-diary {
+    padding: 0.2rem 0.5rem;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background:var(--primary-color);
+    transition: .3s;
+}
+.btn-add-diary:hover{
+    background:var(--dark-header);
+}
+/* End Top component */
+/* New Diary */
+.new_diary_wrapper > div{
+    padding:1rem;
+    border:1px solid gray;
+    border-radius:10px;
+}
+.new_diary_form > input,
+.new_diary_form > textarea,
+.display-form{
+background: transparent!important;
+    vertical-align: middle;
+}
+/* End New Diary*/
 @media only screen and (max-width: 1024px) {
-	
+   .top_component_inner,
+   btn-add-diary{
+       font-size: 13px!important;
+    }
 	#preview-image-upload{
 	right:0;
 	width:100%;

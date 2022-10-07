@@ -1,6 +1,8 @@
 package com.duongtai.syndiary.controllers;
 
 import com.duongtai.syndiary.configs.Snippets;
+import com.duongtai.syndiary.configs.SortDiary;
+import com.duongtai.syndiary.entities.Diary;
 import com.duongtai.syndiary.entities.User;
 import com.duongtai.syndiary.services.impl.StorageServiceImpl;
 import com.duongtai.syndiary.services.impl.UserServiceImpl;
@@ -12,6 +14,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.websocket.server.PathParam;
+import java.util.List;
+import java.util.Objects;
+
 @Controller
 @RequestMapping("/")
 public class HomeController {
@@ -22,10 +28,23 @@ public class HomeController {
     @Autowired
     private UserServiceImpl userService;
 
+
+
     @GetMapping("")
-    public ModelAndView homePage(ModelMap model){
+    public ModelAndView homePage(ModelMap model, @PathParam("sort") String sort){
+        String[] sorts = { Snippets.LAST_EDITED, Snippets.CREATED_AT, Snippets.A_Z,Snippets.Z_A, Snippets.HIDDEN};
+        if(sort == null) {
+            sort = Snippets.LAST_EDITED;
+        }
+        List<Diary> sortedDiaries = SortDiary.sortByCondition(userService.findByUsername(getUsernameLogin()).getDiaries(),sort);
+        for (Diary diary: sortedDiaries) {
+            System.out.println("Sorted diary: "+diary.getTitle()+ "/"+diary.getLast_edited());
+        }
+        model.addAttribute("sorts",sorts);
+        model.addAttribute("sorted",sort);
         model.addAttribute(Snippets.TITLE, Snippets.APP_NAME+" "+Snippets.TITLE_HOME_PAGE);
-        model.addAttribute("user", userService.getUserByUsername(getUsernameLogin()));
+        model.addAttribute("user", userService.getUserByUsername(Objects.requireNonNull(getUsernameLogin())));
+        model.addAttribute("diaries", sortedDiaries);
         return new ModelAndView("home",model);
     }
     @GetMapping("authen")

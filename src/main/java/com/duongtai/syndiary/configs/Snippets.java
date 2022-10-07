@@ -65,6 +65,7 @@ public class Snippets {
     public static final String A_Z = "A -> Z";
     public static final String Z_A = "Z -> A";
 
+    public static final String HIDDEN = "Hidden";
     //image
     public static final String NONAME = "noname";
 
@@ -89,4 +90,5 @@ public class Snippets {
     public static final String REGISTER = "Register";
     public static final String AUTHENTICATE = "Authentication";
     public static final String UPDATE_USER = "Update user %s";
+    public static final String NEW_DIARY = "New diary";
 }

@@ -31,6 +31,9 @@ public class User {
     @Column(name = "joined_at", updatable = false)
     private String joined_at;
 
+    @OneToMany(targetEntity = Diary.class, mappedBy = "author",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Diary> diaries;
+
     private String last_edited;
 
     private boolean active;
@@ -135,5 +138,11 @@ public class User {
         this.role = role;
     }
 
+    public List<Diary> getDiaries() {
+        return diaries;
+    }
 
+    public void setDiaries(List<Diary> diaries) {
+        this.diaries = diaries;
+    }
 }

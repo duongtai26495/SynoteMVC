@@ -57,7 +57,7 @@
             <div class="col-md-3 text-center">
                 <!--User-->
                 <div class="user-nav">
-                    <a onclick="openUserBar()" class="btn user-link" sec:authorize="isAuthenticated()">
+                    <a th:if="${user}" onclick="openUserBar()" class="btn user-link" sec:authorize="isAuthenticated()">
                         <i class="fa-solid fa-user"></i> 
 					[[${#request.userPrincipal.principal.fullname}]] 
                     </a>
@@ -81,7 +81,7 @@
         </div>
         <div class="col-4 text-end">
             <!-- User Button -->
-            <a onclick="openUserBar()" id="user-btn" class="user-link">
+            <a th:if="${user}" onclick="openUserBar()" id="user-btn" class="user-link">
                         <i class="fa-solid fa-user"></i>
                         [[${#request.userPrincipal.principal.fullname}]] 
             </a>
@@ -119,7 +119,7 @@
         </span>
     </div>
     
-    <div onclick="closeUserBar()" id="user_info_wrapper">
+    <div th:if="${user}" onclick="closeUserBar()" id="user_info_wrapper">
 	    <div id="user-infor-tab">
 	        <div class="container flex-column d-flex col-12">
 	            <h3 class="align-self-center mt-2 text-white">Profile Info</h3>
