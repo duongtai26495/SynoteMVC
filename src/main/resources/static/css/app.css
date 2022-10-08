@@ -6,16 +6,18 @@ a{
     text-decoration: none!important;
 }
 :root{
-    --primary-color:#ef233c;
+    --primary-color:#0f7173;
+    --secondary-color:#256D85;
     --dark-header:#090a0a;
     --dark-body:#101212;
-    --secondary-color:#4C6793;
 }
 body{
 	overflow-x:hidden!important;
 	background-color:var(--dark-body)!important;	 
 }
-
+.font-primary{
+	color:var(--primary-color)!important;
+}
 .btn-primary{
 transition: .3s!important;
 background:var(--primary-color)!important;
@@ -258,18 +260,22 @@ background: transparent!important;
 
 /* Diary row */
 .diary-item{
-    background-color:var(--primary-color);
-    border-radius: 5px;
-    border:1px solid gray;
+   
     color: white;
     display: flex;
     flex-direction: row;
 }
 .diary-row{
     margin-bottom: .5rem;
-    width: 48%;
-    padding-bottom: 5px;
-    transition: .3s;
+    width: 49.5%;
+    padding:5;
+    transition: .3s; background-color:var(--dark-header);
+    border-radius: 5px;
+    border:1px solid gray;
+    
+}
+.diary-row *{
+	color:#e3e3e3;
 }
 .diary-list-wrapper{
     justify-content: space-between;
@@ -308,6 +314,7 @@ background: transparent!important;
      white-space: normal;
      -webkit-line-clamp: 3;
      text-align: justify;
+    height: 50px;
 }
 .diary-row:hover {
     scale: 1.025;
@@ -321,12 +328,14 @@ background: transparent!important;
     align-items: center;
     font-size: 12px;
 }
+.done{
+-webkit-text-decoration-line: line-through; /* Safari */
+   text-decoration-line: line-through; 
+}
 /* End Diary row */
 
 /* Update diary */
-.diary-detail{
 
-}
 .diary-detail .diary-form input,
 .diary-detail .diary-form textarea{
     background-color: black;
@@ -338,6 +347,7 @@ background: transparent!important;
     margin-top: 10px;
     font-weight: bold;
 }
+
 
 /* End Update diary */
 @media only screen and (max-width: 1024px) {
@@ -368,11 +378,11 @@ background: transparent!important;
  }
 #side-bar{
 	display:unset;
-    height:100vh;
+    height:auto;
     width: 100vw;
     background-color: var(--dark-header);
-    position: fixed;
-    top: 0;
+    position: absolute;
+    top: 55px;
     overflow: hidden;
     left: -100%;
     z-index: 1;
@@ -381,7 +391,6 @@ background: transparent!important;
 .search-bar-mobile{
     height:100%;
     width:100%;
-    padding-top: 2rem;
     left:0;
     top: 0;
     z-index: 100;
@@ -392,6 +401,7 @@ background: transparent!important;
     background-color: black;
     border-radius: 5px;
     padding: 10px;
+    border: 1px solid white;
 }
 .search-bar-mobile input{
     padding: 5px;
@@ -411,6 +421,7 @@ background: transparent!important;
     bottom: 15%;
     right:10px;
     z-index: 99;
+    display:none;
     text-align: center;
     scale: 2;
     color: white;

@@ -1,10 +1,15 @@
-
-function openMenuBar(){
-    document.getElementById("side-bar").style.left = "0%"
-}
-
-function closeSideBar(){
-   document.getElementById("side-bar").style.left = "-100%"
+var open = false;
+function openSearchBar(){
+	const icon = document.getElementById("side-bar-btn");
+	open = !open;
+	if(open){
+		document.getElementById("side-bar").style.left = "0%";
+		icon.innerHTML = '<i class="fa-solid fa-x"></i>';
+	}else{
+		document.getElementById("side-bar").style.left = "-100%"
+		icon.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i>';
+	}
+    
 }
 
 function closeUserBar(){
@@ -63,3 +68,5 @@ function cancelUpload(){
 	fileSelected = null;
 	
 }
+
+

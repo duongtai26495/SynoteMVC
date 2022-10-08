@@ -3,15 +3,19 @@
     margin:0;
 }
 
+
 :root{
-    --primary-color: #ba6e6e;
-    --secondary-color:#A04668;
+    --primary-color:#0f7173;
+    --secondary-color:#256D85;
     --bg-1:url(/images/bg-1.jpg);
     --bg-2:url(/images/bg-2.jpg);
 }
+
+
 body{
     overflow-x: hidden;
 }
+
 .wrapper{
     position: relative;
     background-image: var(--bg-1);
@@ -92,11 +96,10 @@ body{
 font-size:18px;
 font-weight:italic;
 margin:auto;
+text-shadow: 0px 0px 2px black;
+text-align: center;
 }
-.warning_text{
-    text-shadow: 0px 0px 2px black;
-    text-align: center;
-}
+
 @media only screen and (max-width: 1024px) {
     .authen-panel{
         width: 400px;

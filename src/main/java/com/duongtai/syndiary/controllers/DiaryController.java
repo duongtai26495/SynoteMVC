@@ -1,6 +1,7 @@
 package com.duongtai.syndiary.controllers;
 
 import com.duongtai.syndiary.configs.Snippets;
+import com.duongtai.syndiary.configs.SortDiary;
 import com.duongtai.syndiary.entities.Diary;
 import com.duongtai.syndiary.services.impl.DiaryServiceImpl;
 import com.duongtai.syndiary.services.impl.UserServiceImpl;
@@ -14,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.websocket.server.PathParam;
 
 import static com.duongtai.syndiary.configs.MyUserDetail.getUsernameLogin;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/diary/")
@@ -74,6 +77,22 @@ public class DiaryController {
         diary.setId(Long.parseLong(id));
         diary.setDisplay(true);
         diaryService.update_display(diary);
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/?sort="+Snippets.HIDDEN);
+    }
+    
+    @GetMapping("update_done")
+    public ModelAndView update_done(ModelMap model, Diary diary, @PathParam("id") String id, @PathParam("done") String done) {
+    	
+    	diary.setDone(Boolean.parseBoolean(done));
+    	diary.setId(Long.parseLong(id));
+    	diaryService.update_done(diary);
+    	return new ModelAndView("redirect:/");
+    }
+    
+    @GetMapping("searching")
+    public ModelAndView search(ModelMap model, @PathParam("keyword") String keyword) {
+    	List<Diary> sortedDiaries = SortDiary.sortByCondition(diaryService.searchWithKeyword(keyword),Snippets.LAST_EDITED);
+        model.addAttribute("diaries", sortedDiaries);
+    	return new ModelAndView("/diary/search",model); 
     }
 }

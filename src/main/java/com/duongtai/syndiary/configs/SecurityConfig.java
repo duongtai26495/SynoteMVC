@@ -37,6 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/user/images/**",
                         "/css/**",
                         "/js/**",
+                        "/fonts/**",
                         "/authen",
                         "/save_user").permitAll()
                 .and()

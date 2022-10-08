@@ -21,8 +21,9 @@
         <button onclick="open_register()" id="open-register" class="form-control btn btn-primary mt-3 p-2">Join Now</button>
         <div class="d-flex flex-column mt-5">
         <div id="login_status">
-        <p th:if="${(param.logout != null) and (param.logout[0] == 'true')}" class="warning_text text-success">Logout success</p>
+        <p th:if="${(param.logout != null) and (param.logout[0] == 'true')}" class="warning_text text-white">Logout success</p>
         <p th:if="${(param.login != null) and (param.login[0] == 'false')}" class="warning_text text-danger">Username or Password incorrect</p>
+       <p th:if="${(param.register != null) and (param.register[0] == 'true')}" class="warning_text text-success">Register Successfully</p>
         </div>    
         </div>
        </div>
@@ -46,8 +47,8 @@
             <input id="register_password"  class="form-control p-2 mt-3" type="password" placeholder="Password" name="password" />
             <input class="form-control btn btn-secondary mt-3 p-2" type="submit" name="submit" value="Join now" />
         </form>
+        
         <button onclick="open_login()" id="open-login" class="form-control btn btn-primary mt-3 p-2">Login</button>
-       
         
     </div>
    

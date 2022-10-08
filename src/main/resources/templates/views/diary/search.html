@@ -4,7 +4,16 @@
 </head>
 <body>
 <div th:replace="/fragments/header::header_nav" class="header_top"></div>
-<div th:replace="/fragments/fragments::top_component" class="top_component"></div>
+
+<div class="container top_component " th:fragment="top_component">
+        <div class="top_component_inner d-flex flex-row col-md-6 col-12 offset-md-3 p-2 mt-3 text-white  align-items-center">
+ 
+            <div class="col-12 p-1 text-center">
+                <span class="total_count" th:text="'Found : '+ ${#lists.size(diaries)} + ' diaries with keyword : '+${param.keyword}+''"></span>
+            </div>
+          
+        </div>
+    </div>
 
 <div class="diary-list-wrapper container">
     <div class="diary-list-wrapper flex-wrap col-md-6 d-flex flex-row offset-md-3 col-12 mt-2">

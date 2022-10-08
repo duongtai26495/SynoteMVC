@@ -37,9 +37,7 @@ public class HomeController {
             sort = Snippets.LAST_EDITED;
         }
         List<Diary> sortedDiaries = SortDiary.sortByCondition(userService.findByUsername(getUsernameLogin()).getDiaries(),sort);
-        for (Diary diary: sortedDiaries) {
-            System.out.println("Sorted diary: "+diary.getTitle()+ "/"+diary.getLast_edited());
-        }
+       
         model.addAttribute("sorts",sorts);
         model.addAttribute("sorted",sort);
         model.addAttribute(Snippets.TITLE, Snippets.APP_NAME+" "+Snippets.TITLE_HOME_PAGE);

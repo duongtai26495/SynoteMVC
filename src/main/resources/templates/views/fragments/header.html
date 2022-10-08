@@ -45,11 +45,11 @@
             <div class="col-md-6 text-center">
                 <!--Search bar-->
                 <div class="search-bar col-12">
-                    <form action="" class="search-form flex-row">
+                    <form th:action="@{/diary/searching}" method="GET" class="search-form flex-row">
                         <button type="submit" class="col-2 search-button">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
-                        <input type="text" class="search-field col-10" placeholder="Searching...">
+                        <input  type="search" name="keyword" class="search-field col-10" placeholder="Searching...">
                     </form>
                 </div>
             </div>
@@ -68,8 +68,8 @@
 
     <header class="header_mobile container-fluid flex-row align-items-center">
         <div class="col-4">
-            <!-- Menu Button -->
-            <span class="menu-bar text-white" onclick="openMenuBar()" id="side-bar-btn">
+            <!-- Search Button -->
+            <span class="menu-bar text-white" onclick="openSearchBar()" id="side-bar-btn">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </span>
         </div>
@@ -90,26 +90,14 @@
 
     <div id="side-bar">
         <div class="search-bar-mobile col-12">
-            <form action="" class="search-form-mobile flex-row">
+            <form th:action="@{/diary/searching}" method="GET" class="search-form-mobile flex-row">
                 <button type="submit" class="col-2 search-button">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
-                <input type="text" class="search-field col-10" placeholder="Searching...">
+                <input type="search" class="search-field col-10" name="keyword" placeholder="Searching...">
                
             </form>
             <div class="search-content-ajax d-flex flex-column mt-2">
-                <div class="row-content-search mt-2">
-    
-                </div>
-                <div class="row-content-search mt-2">
-                    
-                </div>
-                 <div class="row-content-search mt-2">
-                    
-                </div>
-                <div class="row-content-search mt-2">
-                    
-                </div>
                 
             </div>
         </div>
