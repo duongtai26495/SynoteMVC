@@ -9,7 +9,7 @@
     <div class="col-12 col-md-4 mt-3 p-2 offset-md-4 d-flex flex-column text-center">
         <span class="text-white h4">New diary</span>
         <form class="new_diary_form mt-2 col-12 p-2 form-group" method="post" th:action="@{/diary/save}" th:object="${diary}">
-            <input type="text" class="text-white form-control col-12 mt-2" th:value="${diary.title}" name="title" placeholder="Title">
+           
             <textarea name="content" class="text-white form-control col-12 mt-2" cols="10" rows="5" th:placeholder="${diary.content != '' ? 'Content' : '' }">[(${diary.content})]</textarea>
             <div class="display-form d-flex flex-row col-12 form-control text-white mt-2">
                 <label>Display after saved?</label>

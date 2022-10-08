@@ -14,8 +14,8 @@ public class Diary {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(length = 255)
-	private String title;
+//	@Column(length = 255)
+//	private String title;
 
 	@Column(length = 5000)
 	private String content;
@@ -44,13 +44,13 @@ public class Diary {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
+//	public String getTitle() {
+//		return title;
+//	}
+//
+//	public void setTitle(String title) {
+//		this.title = title;
+//	}
 
 	public String getContent() {
 		return content;

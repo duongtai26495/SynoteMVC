@@ -43,7 +43,7 @@ public class DiaryServiceImpl implements DiaryService {
     @Override
     public Diary update_diary(Diary diary) {
         Diary found_diary = diaryRepository.findById(diary.getId()).get();
-        found_diary.setTitle(diary.getTitle());
+//        found_diary.setTitle(diary.getTitle());
         found_diary.setContent(diary.getContent());
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat(Snippets.TIME_PATTERN);
@@ -83,8 +83,7 @@ public class DiaryServiceImpl implements DiaryService {
 		List<Diary> found_list = new ArrayList<>();
 		
 		for(Diary diary : diaries) {
-			if(diary.getTitle().toLowerCase().trim().contains(keyword.toLowerCase().trim()) 
-					|| diary.getContent().toLowerCase().trim().contains(keyword.toLowerCase().trim())) {
+			if(diary.getContent().toLowerCase().trim().contains(keyword.toLowerCase().trim())) {
 				found_list.add(diary);
 			}
 		}

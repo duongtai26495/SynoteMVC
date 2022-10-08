@@ -50,7 +50,7 @@ public class DiaryController {
     @GetMapping("update/{id}")
     public ModelAndView update_diary(ModelMap model, Diary diary, @PathVariable String id){
         model.addAttribute("diary",diaryService.getById(Long.parseLong(id)));
-        model.addAttribute("title","Update diary - "+ diaryService.getById(diary.getId()).getTitle());
+        model.addAttribute("title","Update diary - "+ diaryService.getById(diary.getId()).getContent());
         return new ModelAndView("/diary/update");
     }
 
@@ -93,6 +93,7 @@ public class DiaryController {
     public ModelAndView search(ModelMap model, @PathParam("keyword") String keyword) {
     	List<Diary> sortedDiaries = SortDiary.sortByCondition(diaryService.searchWithKeyword(keyword),Snippets.LAST_EDITED);
         model.addAttribute("diaries", sortedDiaries);
+        model.addAttribute("keyword", keyword);
     	return new ModelAndView("/diary/search",model); 
     }
 }

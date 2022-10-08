@@ -31,10 +31,10 @@ public class SortDiary {
                     Collections.reverse(diaryList);
                     break;
                 case Snippets.A_Z:
-                    diaryList.sort((o1, o2) -> o1.getTitle().compareToIgnoreCase(o2.getTitle()));
+                    diaryList.sort((o1, o2) -> o1.getContent().compareToIgnoreCase(o2.getContent()));
                     break;
                 case Snippets.Z_A:
-                    diaryList.sort((o1, o2) -> o1.getTitle().compareToIgnoreCase(o2.getTitle()));
+                    diaryList.sort((o1, o2) -> o1.getContent().compareToIgnoreCase(o2.getContent()));
                     Collections.reverse(diaryList);
                     break;
                 default:
