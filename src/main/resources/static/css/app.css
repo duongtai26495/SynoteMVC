@@ -7,19 +7,7 @@ a{
 }
 :root{
     --primary-color:#0f7173;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    --secondary-color:#256D85;
-=======
     --secondary-color:#297373;
->>>>>>> 33e2c0a4c9a40a79639190b3ebdc596b7fef63b8
-=======
-    --secondary-color:#297373;
->>>>>>> 33e2c0a4c9a40a79639190b3ebdc596b7fef63b8
-=======
-    --secondary-color:#297373;
->>>>>>> 33e2c0a4c9a40a79639190b3ebdc596b7fef63b8
     --dark-header:#090a0a;
     --dark-body:#101212;
 }
@@ -273,36 +261,17 @@ background: transparent!important;
 /* Diary row */
 .diary-item{
    
-    color: white;
+    color:rgba(200,200,200,1)!important;
     display: flex;
     flex-direction: row;
 }
 .diary-row{
     margin-bottom: .5rem;
-<<<<<<< HEAD
     width: 49.5%;
     padding:5;
     transition: .3s; background-color:var(--dark-header);
     border-radius: 5px;
     border:1px solid gray;
-    
-}
-.diary-row *{
-	color:#e3e3e3;
-=======
-    width: 48%;
-    padding:5;
-    transition: .3s; background-color:var(--primary-color);
-    border-radius: 5px;
-    border:1px solid gray;
-    
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 33e2c0a4c9a40a79639190b3ebdc596b7fef63b8
-=======
->>>>>>> 33e2c0a4c9a40a79639190b3ebdc596b7fef63b8
-=======
->>>>>>> 33e2c0a4c9a40a79639190b3ebdc596b7fef63b8
 }
 .diary-list-wrapper{
     justify-content: space-between;
@@ -359,6 +328,11 @@ background: transparent!important;
 -webkit-text-decoration-line: line-through; /* Safari */
    text-decoration-line: line-through; 
 }
+
+.update_done i{
+    color:rgba(200,200,200,1)!important;
+}
+
 /* End Diary row */
 
 /* Update diary */
@@ -374,8 +348,6 @@ background: transparent!important;
     margin-top: 10px;
     font-weight: bold;
 }
-
-
 /* End Update diary */
 @media only screen and (max-width: 1024px) {
     .diary-row{
