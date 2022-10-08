@@ -6,10 +6,10 @@ a{
     text-decoration: none!important;
 }
 :root{
-    --primary-color:#ef233c;
+    --primary-color:#0f7173;
+    --secondary-color:#297373;
     --dark-header:#090a0a;
     --dark-body:#101212;
-    --secondary-color:#4C6793;
 }
 body{
 	overflow-x:hidden!important;
@@ -258,9 +258,7 @@ background: transparent!important;
 
 /* Diary row */
 .diary-item{
-    background-color:var(--primary-color);
-    border-radius: 5px;
-    border:1px solid gray;
+   
     color: white;
     display: flex;
     flex-direction: row;
@@ -268,8 +266,11 @@ background: transparent!important;
 .diary-row{
     margin-bottom: .5rem;
     width: 48%;
-    padding-bottom: 5px;
-    transition: .3s;
+    padding:5;
+    transition: .3s; background-color:var(--primary-color);
+    border-radius: 5px;
+    border:1px solid gray;
+    
 }
 .diary-list-wrapper{
     justify-content: space-between;
@@ -324,9 +325,7 @@ background: transparent!important;
 /* End Diary row */
 
 /* Update diary */
-.diary-detail{
 
-}
 .diary-detail .diary-form input,
 .diary-detail .diary-form textarea{
     background-color: black;
