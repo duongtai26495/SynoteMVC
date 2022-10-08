@@ -15,6 +15,7 @@ body{
 	overflow-x:hidden!important;
 	background-color:var(--dark-body)!important;	 
 }
+
 .btn-primary{
 transition: .3s!important;
 background:var(--primary-color)!important;
@@ -254,7 +255,95 @@ background: transparent!important;
     vertical-align: middle;
 }
 /* End New Diary*/
+
+/* Diary row */
+.diary-item{
+    background-color:var(--primary-color);
+    border-radius: 5px;
+    border:1px solid gray;
+    color: white;
+    display: flex;
+    flex-direction: row;
+}
+.diary-row{
+    margin-bottom: .5rem;
+    width: 48%;
+    padding-bottom: 5px;
+    transition: .3s;
+}
+.diary-list-wrapper{
+    justify-content: space-between;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.title{
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.diary-item .title{
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(255,255,255,.3);
+
+}
+.title_diary{
+    font-weight: bold;
+}
+.diary-item{
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+
+}
+.diary-item:hover{
+    color: white;
+}
+.diary-content{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     white-space: normal;
+     -webkit-line-clamp: 3;
+     text-align: justify;
+}
+.diary-row:hover {
+    scale: 1.025;
+}
+#isDone{
+    width:20px;
+    height:20px;
+}
+.diary-info{
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+/* End Diary row */
+
+/* Update diary */
+.diary-detail{
+
+}
+.diary-detail .diary-form input,
+.diary-detail .diary-form textarea{
+    background-color: black;
+    color: white;
+}
+.diary-form .warning_text{
+    margin: auto;
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* End Update diary */
 @media only screen and (max-width: 1024px) {
+    .diary-row{
+        width: 100%;
+   }
    .top_component_inner,
    btn-add-diary{
        font-size: 13px!important;

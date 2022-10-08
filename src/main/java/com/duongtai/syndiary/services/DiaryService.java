@@ -9,6 +9,8 @@ import javax.persistence.OneToMany;
 
 public interface DiaryService {
 
+    Diary getById(Long id);
+
     Diary save_diary(Diary diary);
 
     Diary update_diary(Diary diary);

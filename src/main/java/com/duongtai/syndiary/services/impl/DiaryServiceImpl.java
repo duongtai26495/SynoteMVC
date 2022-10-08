@@ -22,6 +22,11 @@ public class DiaryServiceImpl implements DiaryService {
     private UserServiceImpl userService;
 
     @Override
+    public Diary getById(Long id) {
+        return diaryRepository.findById(id).get();
+    }
+
+    @Override
     public Diary save_diary(Diary diary) {
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat(Snippets.TIME_PATTERN);
@@ -37,8 +42,6 @@ public class DiaryServiceImpl implements DiaryService {
         Diary found_diary = diaryRepository.findById(diary.getId()).get();
         found_diary.setTitle(diary.getTitle());
         found_diary.setContent(diary.getContent());
-        found_diary.setDone(diary.isDone());
-        found_diary.setDisplay(diary.isDisplay());
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat(Snippets.TIME_PATTERN);
         found_diary.setLast_edited(sdf.format(date));

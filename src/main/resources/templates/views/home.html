@@ -6,6 +6,33 @@
 <div th:replace="/fragments/header::header_nav" class="header_top"></div>
 <div th:replace="/fragments/fragments::top_component" class="top_component"></div>
 
+<div class="diary-list-wrapper container">
+    <div class="diary-list-wrapper flex-wrap col-md-6 d-flex flex-row offset-md-3 col-12 mt-2">
+        <div th:each="diary : ${diaries}" class="diary-row">
+            <a th:href="@{/diary/update/}+${diary.id}" class="col-12 diary-item p-2">
+                <div class="d-flex flex-row col-12">
+                    <div class="title col-12">
+                        <span th:text="${diary.title}" class="title_diary"></span>
+                    </div>
+                </div>
+
+                <div class="diary-content mt-1">
+                    [(${diary.content})]
+                </div>
+                <div class="diary-info d-flex flex-row mt-2">
+                    <form method="post" class="form-check-done col-1 form-group d-flex flex-row">
+                        <input type="checkbox" class="" name="done" value="done" id="isDone">
+                    </form>
+                    <span class="diary-time">
+                        [[${diary.last_edited}]]
+                    </span>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+
 <div th:replace="/fragments/footer::footer" class="footer"></div>
 </body>
 </html>

@@ -119,4 +119,6 @@ public class UserController {
     	return new ModelAndView("redirect:/user/update/"+user.getUsername(),model);
     }
 
+
+
 }
