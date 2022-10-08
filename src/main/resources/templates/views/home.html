@@ -22,8 +22,14 @@
                
             </a>
              <div class="diary-info d-flex flex-row mt-2 p-2">
+<<<<<<< HEAD
              		<a th:href="@{/diary/update_done?id=}+${diary.id}+'&done=false'" th:if="${diary.done == true}" class="update_done btn"><i class="fa-regular fa-square-check"></i></a>
              		<a th:href="@{/diary/update_done?id=}+${diary.id}+'&done=true'" th:if="${diary.done == false}" class="update_done btn"><i class="fa-regular fa-square"></i></a>
+=======
+                    <form method="post" class="form-check-done col-1 form-group d-flex flex-row">
+                        <input type="checkbox" class="" name="done" value="done" id="isDone">
+                    </form>
+>>>>>>> 33e2c0a4c9a40a79639190b3ebdc596b7fef63b8
                      <span class="diary-time text-white">
                         [[${diary.last_edited}]]
                     </span>
@@ -35,6 +41,10 @@
 	                        <i class="fa-solid fa-trash-arrow-up"></i>
 	                    </a>
                 	</div>
+<<<<<<< HEAD
+=======
+                   
+>>>>>>> 33e2c0a4c9a40a79639190b3ebdc596b7fef63b8
              </div>
         </div>
 
