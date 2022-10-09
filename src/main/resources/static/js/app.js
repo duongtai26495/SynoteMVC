@@ -29,18 +29,19 @@ function uploadImage(file){
         }else{
 			document.getElementById("preview-image-selected").style.backgroundImage = "url("+URL.createObjectURL(file.files[0])+")";
            document.getElementById("preview-image-upload").style.display = "block";
-        //   uploadImageToAPI(file.files[0]) 
+        //   uploadImageToAPI(file.files[0])
            fileSelected = file.files[0];
            file.files[0].remove;
         }
     	}
     }
-    
+
 function confirmUpload(){
-   uploadImageToAPI(fileSelected)  
-}    
-  
-    
+     uploadImageToAPI(fileSelected)
+//   uploadImageToFireBase(fileSelected)
+}
+
+
   function uploadImageToAPI(file){
 	 var formdata = new FormData();
 			formdata.append("image", file);
@@ -57,16 +58,61 @@ function confirmUpload(){
             	document.getElementById("image-selected").style.backgroundImage = "url(/user/images/"+username+")";
             	document.getElementById("image-selected").style.backgroundImage = "url("+URL.createObjectURL(file)+")";
             	document.getElementById("preview-image-upload").style.display = "none";
-       
             })
               .catch(error => console.log('error', error));
+
+}
+
+async function uploadImageToFireBase(file){
+
+
+    var fileImg = file;
+    var ImgName = getFilename(fileImg) + getFileExt(fileImg)
+    const metaData = {
+    contentType:fileImg.type
+    }
+    
+
+    console.log("Begin upload")
+
+
+    const storageRef = sRef(storage, "Profile/"+ImgName);
+
+    const uploadTask = uploadBytesResumable(storageRef, fileImg, metaData);
+
+    uploadTask.on('state-changed', (snapshot)=>{
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Progress: "+progress);
+    }),
+    (error) => {
+        console.log("Upload failed")
+    },
+    ()=>{
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL)=>{
+            console.log("URL: "+downloadURL)
+        })
+    }
+
+
 
 }
 
 function cancelUpload(){
 	document.getElementById("preview-image-upload").style.display = "none";
 	fileSelected = null;
-	
+
+}
+
+function getFileExt(file){
+    var temp = fileSelected.name.split('.');
+    var ext = temp.slice((temp.length -1),(temp.length));
+    return '.'+ext[0];
+}
+
+function getFilename(file){
+    var temp = file.name.split('.');
+    var fname = temp.slice(0,-1).join('.');
+    return fname;
 }
 
 

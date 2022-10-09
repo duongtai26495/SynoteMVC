@@ -15,6 +15,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.png}">
+
 </head>
 <head th:fragment="header_authenticate">
     <meta charset="UTF-8">
@@ -29,11 +30,14 @@
     <script th:src="@{../js/bootstrap.min.js}"  type="text/javascript" ></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.png}">
+
+
 </head>
 <body>
 
 <div th:fragment="header_nav">
-	   <header class="header_desktop container-fluid">
+
+	<header class="header_desktop container-fluid">
         <div class="container d-flex flex-row align-items-center">
             <div class="col-md-3 text-center">
                 <!-- Logo -->
@@ -49,7 +53,8 @@
                         <button type="submit" class="col-2 search-button">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
-                        <input  type="search" name="keyword" th:value="${keyword}" class="search-field col-10" placeholder="Searching...">
+                        <input  type="search" name="keyword" th:value="${keyword}"
+                                class="search-field col-10" placeholder="Searching...">
                     </form>
                 </div>
             </div>
@@ -59,7 +64,7 @@
                 <div class="user-nav">
                     <a th:if="${user}" onclick="openUserBar()" class="btn user-link" sec:authorize="isAuthenticated()">
                         <i class="fa-solid fa-user"></i> 
-					[[${#request.userPrincipal.principal.fullname}]] 
+					[[${#request.userPrincipal.principal.fullname}]]
                     </a>
                 </div>
             </div>
