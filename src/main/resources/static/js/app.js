@@ -71,7 +71,7 @@ async function uploadImageToFireBase(file){
     const metaData = {
     contentType:fileImg.type
     }
-    
+
 
     console.log("Begin upload")
 
